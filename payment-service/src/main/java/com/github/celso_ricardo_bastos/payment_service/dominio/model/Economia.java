@@ -7,4 +7,11 @@ public record Economia(
    String timestamp,
    LocalDateTime create_date
 ) {
+    public Economia withBid(String novoBid) {
+        return new Economia(
+                novoBid,
+                this.timestamp,
+                this.create_date
+        );
+    }
 }

@@ -36,21 +36,11 @@ public class ImpWebFluxClientAdapter implements CreatePaymentOutboundPort {
 
     /**
      * Executa as duas chamadas externas.
-     * <p>
-     * IMPORTANTE:
-     * <p>
-     * Não usamos .block().
-     * <p>
-     * As duas operações são representadas por Mono
-     * e posteriormente combinadas através do Mono.zip().
      */
     public Mono<DataApisExternal> execute(String cep) {
 
         /*
          * Apenas criamos a operação.
-         *
-         * A chamada HTTP será executada quando o fluxo
-         * reativo for consumido.
          */
         Mono<ViaCepResponse> address = clientAdress.findByCep(cep);
         Mono<EconomiaResponse> exchangeRate = clientExchange.findEconomia();
@@ -58,9 +48,6 @@ public class ImpWebFluxClientAdapter implements CreatePaymentOutboundPort {
         log.info("Executando as duas APIs de forma simultanea 'Async'");
         /*
          * Mono.zip combina os resultados das duas operações.
-         *
-         * As duas operações podem ser executadas
-         * concorrentemente.
          */
         return Mono.zip(
                         address,

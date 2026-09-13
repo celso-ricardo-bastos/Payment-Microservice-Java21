@@ -14,5 +14,8 @@ public record OrderRequest(
         BigDecimal totalAmount,
 
         @NotNull
-        String cep
+        String cep,
+
+        @NotNull
+        String status
 ) {}

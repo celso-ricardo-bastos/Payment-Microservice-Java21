@@ -13,6 +13,7 @@ public class Order {
     private final LocalDateTime createdAt;
     private final String cep;
 
+
     /**
      * Construtor para a criação de um NOVO pedido.
      * Gera automaticamente o orderId (UUID), o status inicial ("PENDING") e a data de criação.
@@ -44,7 +45,7 @@ public class Order {
     /**
      * Construtor secundário para reconstituir um pedido existente a partir do banco de dados ou DTO.
      */
-    public Order(String orderId, String customerId, BigDecimal totalAmount, OrderStatus status, LocalDateTime createdAt, String cep) {
+    public Order(String orderId, String customerId, BigDecimal totalAmount, OrderStatus status, LocalDateTime createdAt, String cep, String off) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.totalAmount = totalAmount;

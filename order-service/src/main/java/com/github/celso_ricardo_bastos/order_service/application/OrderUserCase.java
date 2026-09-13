@@ -22,7 +22,7 @@ public class OrderUserCase implements OrderInboundPort {
 
     @Override
     public OrderResponse publishOrder(OrderRequest orderRequest) {
-        Order order = Order.create(orderRequest.customerId(), orderRequest.totalAmount(), OrderStatus.CREATED, orderRequest.cep());
+        Order order = Order.create(orderRequest.customerId(), orderRequest.totalAmount(), OrderStatus.valueOf(orderRequest.status()), orderRequest.cep());
         OrderCreatedEvent orderCreatedEvent = new OrderCreatedEvent(
                 order.getOrderId(),
                 order.getCustomerId(),

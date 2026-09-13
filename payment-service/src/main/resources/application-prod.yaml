@@ -1,0 +1,22 @@
+spring:
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
+    consumer:
+      group-id: payment-group
+
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+
+  datasource:
+    url: ${POSTGRES_URL}
+    username: ${POSTGRES_USERNAME}
+    password: ${POSTGRES_PASSWORD}
+
+external:
+  api:
+    viacep:
+      base-url: ${VIACEP_BASE_URL}
+
+    exchange:
+      base-url: ${EXCHANGE_BASE_URL}

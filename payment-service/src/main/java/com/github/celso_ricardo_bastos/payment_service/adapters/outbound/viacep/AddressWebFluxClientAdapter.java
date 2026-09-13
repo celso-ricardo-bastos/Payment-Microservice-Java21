@@ -1,10 +1,7 @@
 package com.github.celso_ricardo_bastos.payment_service.adapters.outbound.viacep;
 
-import com.github.celso_ricardo_bastos.payment_service.application.dto.DataApisExternal;
-import com.github.celso_ricardo_bastos.payment_service.application.ports.outbound.AddressWebFluxOutboundPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 /**

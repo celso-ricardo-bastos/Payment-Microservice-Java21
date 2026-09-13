@@ -61,6 +61,19 @@ public class Payment {
         );
     }
 
+    public void applyOffBid(Payment payment, String off) {
+        BigDecimal bid = new BigDecimal(payment.getEconomia().bid());
+        BigDecimal desconto = new BigDecimal(off);
+
+        BigDecimal novoBid = bid
+                .multiply(BigDecimal.ONE.subtract(
+                        desconto.divide(BigDecimal.valueOf(100))
+                ));
+
+        this.economia = payment.getEconomia()
+                .withBid(novoBid.toPlainString());
+    }
+
     public String getOrderId() {
         return orderId;
     }
@@ -87,5 +100,33 @@ public class Payment {
 
     public Economia getEconomia() {
         return economia;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    public void setTotalAmount(BigDecimal totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public void setStatus(PaymentStatus status) {
+        this.status = status;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void setEconomia(Economia economia) {
+        this.economia = economia;
     }
 }

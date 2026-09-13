@@ -1,0 +1,21 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: payment-group-test
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/order_nosql
+  datasource:
+    url: ${POSTGRES_URL:jdbc:postgresql://localhost:5432/order_db}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
+external:
+  api:
+    viacep:
+      base-url: https://viacep.com.br
+    exchange:
+      base-url: https://economia.awesomeapi.com.br
