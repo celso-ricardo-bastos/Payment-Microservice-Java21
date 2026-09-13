@@ -15,7 +15,6 @@ public class PaymentStatusStrategyFactory {
 
     public PaymentStatusStrategyFactory(
             List<PaymentStatusStrategy> strategyList) {
-
         this.strategies = strategyList.stream()
                 .collect(Collectors.toMap(
                         PaymentStatusStrategy::status,

@@ -9,10 +9,11 @@ import java.math.BigDecimal;
 public abstract class PaymentStatusStrategy {
    public abstract PaymentStatus status();
    public abstract int off();
-   public void applyOffTotalAmount(Payment payment) {
+   public Payment applyOffTotalAmount(Payment payment) {
         payment.setTotalAmount(payment.getTotalAmount()
                 .multiply(BigDecimal.ONE.subtract(
                         BigDecimal.valueOf(this.off()).divide(BigDecimal.valueOf(100))
                 )));
+        return payment;
     }
 }

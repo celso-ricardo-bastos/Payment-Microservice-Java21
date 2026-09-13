@@ -49,14 +49,11 @@ public class CreatePaymentUserCase implements CreatePaymentInboundPort {
     @Override
     public void executePayment(CreatePaymentCommand command) {
         log.info("Create payment");
+        PaymentStatusStrategy strategy = this.paymentStatusStrategyFactory.get(command.status());
          Mono<Payment> payment =
                 this.createPaymentOutboundPort
                         .createPayment(command)
-                        .map(p -> {
-                            PaymentStatusStrategy strategy = this.paymentStatusStrategyFactory.get(command.status());
-                            strategy.applyOffTotalAmount(p);
-                            return p;
-                        });
+                        .map(applyPaymentStrategy -> strategy.applyOffTotalAmount(applyPaymentStrategy));
         log.info("Save payment");
         this.paymentPersistencePort.save(payment);
     }

@@ -9,6 +9,7 @@ public class CompletedPaymentStrategy extends PaymentStatusStrategy {
     public PaymentStatus status() {
         return PaymentStatus.COMPLETED;
     }
+
     @Override
     public int off() {
         return 15;
